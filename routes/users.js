@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const Model = require("../models/usersModels");
-
+const ModelComp = require("../models/companyModels");
 
 
 router.post("/users", async (req, res) => {
@@ -25,8 +25,11 @@ router.post("/users", async (req, res) => {
 
 router.get("/users", async (req, res) => {
     try {
-        const data = await Model.find();
-        res.status(200).json(data);
+        Model.find({}, function (err, Model) {
+        ModelComp.populate(Model, { path: "company" }, function (err, Model) {
+          res.status(200).send(libros);
+        });
+      });
     } catch (error) {
         res.status(500).json({message: error.message});
     }
