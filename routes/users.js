@@ -1,27 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-
-const dataSchema = new mongoose.Schema({
-    name: {
-        required: true,
-        type: String
-    },
-    userName: {
-        required: true,
-        type: String
-    },
-    email: {
-        required: true,
-        type: String
-    },
-    company: {
-        type: Object
-    }   
-    
-});
-
-module =mongoose.model("Data", dataSchema);
+const Model = require("../models/usersModels");
 
 
 
@@ -32,9 +12,8 @@ router.post("/users", async (req, res) => {
         email: req.body.email,
         company:req.body.company
 
-    });
-    
-    
+    });        
+       
         try {
         const dataToSave = await data.save();
         res.status(200).json(dataToSave);
@@ -87,7 +66,7 @@ router.delete("/users/:id", async (req, res) => {
         const data = await Model.findByIdAndDelete(id);
         res.status(200).json(data);
     } catch (error) {
-        res.status(500).json({message: error.message});
+        res.status(500).json({message: error.message}); 
     }
 });
 

@@ -1,26 +1,8 @@
 const express = require("express");
-const Model = require("../models/model");
+const Model = require("../models/companyModels");
 const router = express.Router();
 const mongoose = require("mongoose");
 
-
-
-const dataSchema = new mongoose.Schema({
-    name: {
-        required: true,
-        type: String
-    },
-    catchPhrase: {
-        required: true,
-        type: String
-    },
-    bs: {
-        required: true,
-        type: String
-    }
-});
-
-mongoose.model("Data", dataSchema);
 
 router.post("/companies", async (req, res) => {
     const data = new Model({
@@ -38,7 +20,7 @@ router.post("/companies", async (req, res) => {
 
 router.get("/companies", async (req, res) => {
     try {
-        const data = await Model.name.find();
+        const data = await Model.find();
         res.status(200).json(data);
     } catch (error) {
         res.status(500).json({message: error.message});
