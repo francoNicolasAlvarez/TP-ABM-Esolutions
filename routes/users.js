@@ -14,12 +14,18 @@ router.post("/users", async (req, res) => {
 
     });        
        
-        try {
+        if(data.name!==null&&data.userName!==null&&data.email!==null&&data.company!==null)
+        {try {
         const dataToSave = await data.save();
         res.status(200).json(dataToSave);
     } catch (error) {
         res.status(500).json({message: error.message});
+    }}
+    else{
+        res.status(400).json({message : "No se han ingresado los datos correctamente"})
     }
+
+    
 });
 
 
