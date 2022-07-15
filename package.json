@@ -1,0 +1,22 @@
+{
+  "name": "tp_abm",
+  "version": "1.0.0",
+  "description": "Trabajo parctico de ABM de empleados y empresas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francoNicolasAlvarez/TP-ABM-Esolutions.git"
+  },
+  "author": "Franco Nicolás Alvarez San Emeterio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/francoNicolasAlvarez/TP-ABM-Esolutions/issues"
+  },
+  "homepage": "https://github.com/francoNicolasAlvarez/TP-ABM-Esolutions#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
